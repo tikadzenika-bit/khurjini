@@ -1,0 +1,210 @@
+/* Khurjini — სტილი
+   ფერები და ფონტები ერთ ადგილას, :root-ში.
+   მოტივი: ხურჯინის ნაქსოვი ზოლი (.weave) — გამყოფი და აქცენტი. */
+
+:root {
+  --cream: #f6eedc;      /* გვერდის ფონი */
+  --cream-2: #ecdfc4;    /* ბარათები */
+  --wal: #3a2416;        /* კაკლისფერი */
+  --wal-d: #2a180d;      /* ტექსტი */
+  --muted: #523f30;
+  --saf: #e8a628;        /* ზაფრანა */
+  --saf-hi: #f3bd4f;
+  --pap: #c0391b;        /* წიწაკა */
+  --pap-d: #a02c11;
+  --pom: #6d1a2b;        /* ბროწეული */
+  --pom-d: #561321;
+
+  --m: clamp(16px, 4.2vw, 64px);
+  --max: 1240px;
+  --f-display: "Playfair Display", "Noto Serif Georgian", Georgia, serif;
+  --f-text: "Noto Sans", "Noto Sans Georgian", system-ui, sans-serif;
+  --s-small: 0.875rem;
+  --s-body: 1.0625rem;
+  --s-lead: clamp(1.125rem, 1.02rem + 0.5vw, 1.375rem);
+  --s-head: clamp(1.85rem, 1.2rem + 2.7vw, 3.25rem);
+  --s-hero: clamp(2.5rem, 1.15rem + 5.6vw, 4.75rem);
+
+  --weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24'%3E%3Crect width='48' height='24' fill='%236d1a2b'/%3E%3Cpath d='M24 0 40 12 24 24 8 12Z' fill='%23e8a628'/%3E%3Cpath d='M24 6 32 12 24 18 16 12Z' fill='%23c0391b'/%3E%3Cpath d='M0 4 6 12 0 20ZM48 4 42 12 48 20Z' fill='%23f6eedc'/%3E%3Crect x='22' y='10' width='4' height='4' fill='%23f6eedc'/%3E%3C/svg%3E");
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--cream); color: var(--wal-d); font: 400 var(--s-body)/1.6 var(--f-text); }
+main { overflow-x: clip; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+h1, h2 { font-family: var(--f-display); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
+h1 { font-size: var(--s-hero); color: var(--pom); }
+h2 { font-size: var(--s-head); }
+h3 { font: 600 1.375rem/1.2 var(--f-display); }
+html[lang="ka"] h1, html[lang="ka"] h2, html[lang="ka"] h3 { letter-spacing: 0; line-height: 1.2; }
+.lead { font-size: var(--s-lead); line-height: 1.5; color: var(--muted); max-width: 34em; }
+:focus-visible { outline: 3px solid var(--pom); outline-offset: 3px; }
+.field-pom :focus-visible, .field-wal :focus-visible, .foot :focus-visible { outline-color: var(--saf-hi); }
+::selection { background: var(--saf); color: var(--wal-d); }
+
+.weave { height: 28px; background: var(--weave) repeat-x center / auto 28px; }
+
+/* ---------- ღილაკები ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+  min-height: 52px; padding: .7em 1.4em; border: 0; border-radius: 4px; cursor: pointer;
+  font: 600 1rem/1.2 var(--f-text); text-decoration: none; text-align: center;
+  transition: background-color .2s, color .2s, transform .2s;
+}
+.btn svg { width: 1.3em; height: 1.3em; flex: none; }
+.btn:active { transform: translateY(2px); }
+.btn-main { background: var(--pap); color: #fff; }
+.btn-main:hover { background: var(--pap-d); }
+.btn-quiet { background: var(--cream-2); color: var(--wal-d); }
+.btn-quiet:hover { background: var(--saf); }
+.btn-saf { background: var(--saf); color: var(--wal-d); }
+.btn-saf:hover { background: var(--saf-hi); }
+.btn-add { background: var(--cream); }
+.field-saf .btn-add { background: var(--cream-2); }
+.btn-add:hover { background: var(--saf); }
+.btn-add[aria-pressed="true"] { background: var(--pom); color: #fff; }
+
+/* ---------- ბანერი და ზედა ზოლი ---------- */
+.demo-banner { background: var(--wal); color: var(--cream); font-size: var(--s-small); text-align: center; padding: .45em var(--m); }
+.top { display: flex; align-items: center; gap: 1.4rem; padding: 16px var(--m); max-width: calc(var(--max) + 2 * var(--m)); margin: 0 auto; }
+.brand { display: inline-flex; align-items: baseline; gap: .5rem; text-decoration: none; color: var(--pom); }
+.brand-mark { width: 26px; height: 26px; color: var(--saf); align-self: center; }
+.brand-name { font: 700 1.6rem/1 var(--f-display); }
+.brand-ka { font: 600 1rem/1 "Noto Serif Georgian", serif; color: var(--pap); display: none; }
+.nav { display: none; gap: 1.5rem; margin-left: auto; }
+.nav a { text-decoration: none; padding: .6em 0; }
+.nav a:hover { color: var(--pap); }
+.lang { display: flex; margin-left: auto; background: var(--cream-2); border-radius: 4px; padding: 3px; }
+.lang button { min-width: 44px; min-height: 40px; border: 0; background: none; color: var(--muted); cursor: pointer; font: 600 .9375rem/1 var(--f-text); border-radius: 3px; }
+.lang button[aria-pressed="true"] { background: var(--pom); color: #fff; }
+@media (min-width: 480px) { .brand-ka { display: inline; } }
+@media (min-width: 980px) { .nav { display: flex; } .lang { margin-left: 0; } }
+
+/* ---------- ჰერო ---------- */
+.hero { max-width: calc(var(--max) + 2 * var(--m)); margin: 0 auto; padding: clamp(16px, 3vw, 40px) var(--m) clamp(40px, 6vw, 72px); display: grid; gap: 32px; }
+.open { display: inline-flex; align-items: center; gap: .55rem; font-size: var(--s-small); font-weight: 600; background: var(--cream-2); padding: .45em .9em; border-radius: 4px; margin-top: 1.5rem; }
+.open[hidden] { display: none; }
+.open-dot { width: 10px; height: 10px; border-radius: 50%; background: #3f8a3a; }
+.open.closed .open-dot { background: var(--pap); }
+.hero .lead { margin-top: 1.1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.7rem; }
+.actions .btn { flex: 1 1 auto; }
+.hero-facts { margin-top: .7rem; color: var(--muted); font-size: var(--s-small); }
+.hero-photo { position: relative; padding-left: 18px; }
+.hero-photo::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 18px; background: var(--weave) repeat-y center / 36px auto; }
+.hero-photo img { width: 100%; aspect-ratio: 6 / 5; object-fit: cover; object-position: 50% 62%; animation: shutter 1.1s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes shutter { from { clip-path: inset(0 0 100% 0); transform: scale(1.08); } to { clip-path: inset(0); transform: none; } }
+@media (min-width: 620px) { .actions .btn { flex: 0 0 auto; } }
+@media (min-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: 56px; }
+  .hero-photo { padding-left: 24px; }
+  .hero-photo::before { width: 24px; background-size: 48px auto; }
+  .hero-photo img { aspect-ratio: 6 / 6.6; }
+}
+
+/* ---------- სექციები ---------- */
+.section { max-width: calc(var(--max) + 2 * var(--m)); margin: 0 auto; padding: clamp(56px, 8vw, 104px) var(--m); }
+.head { display: grid; gap: 1rem; margin-bottom: clamp(28px, 4vw, 48px); }
+@media (min-width: 900px) { .head { grid-template-columns: 1fr 1fr; align-items: end; gap: 56px; } }
+.note { margin-top: 24px; font-size: var(--s-small); }
+
+/* ---------- ბარათები ---------- */
+.grid { display: grid; gap: 16px; }
+.card { background: var(--cream-2); border-radius: 4px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+.card-img { overflow: hidden; background: var(--wal); }
+.card-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .5s ease; }
+.card:hover .card-img img { transform: scale(1.04); }
+.card-body { padding: 18px 18px 20px; display: grid; gap: .55rem; align-content: start; min-width: 0; }
+.card-body > * { min-width: 0; overflow-wrap: anywhere; }
+.card p { color: var(--muted); font-size: 1rem; line-height: 1.5; }
+.card-foot { display: flex; flex-wrap: wrap; gap: 8px; margin-top: .5rem; align-self: end; }
+.card .btn { min-height: 46px; padding: .5em 1em; font-size: .9375rem; flex: 1 1 auto; }
+.price { font-weight: 600; color: var(--pom); }
+@media (min-width: 620px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+@media (min-width: 1000px) { .grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+
+/* ---------- სანელებლების გზამკვლევი ---------- */
+.field-pom { background: var(--pom); color: var(--cream); }
+.field-pom .lead { color: #ecd9c6; }
+.spices { display: grid; gap: 28px 40px; margin-bottom: 40px; }
+.spices li { display: grid; grid-template-columns: 76px 1fr; gap: 4px 18px; align-items: center; }
+.spices svg { grid-row: span 2; width: 76px; height: 60px; }
+.spices h3 { align-self: end; }
+.spices p { align-self: start; color: #ecd9c6; font-size: 1rem; line-height: 1.5; }
+@media (min-width: 700px) { .spices { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .spices { grid-template-columns: repeat(3, 1fr); } .spices li { grid-template-columns: 92px 1fr; } .spices svg { width: 92px; height: 72px; } }
+
+/* ---------- სასაჩუქრე ნაკრებები ---------- */
+.field-saf { background: var(--saf); }
+.field-saf .lead, .field-saf .note { color: var(--wal-d); }
+.field-saf .card { background: var(--cream); }
+
+/* ---------- ისტორია ---------- */
+.story { display: grid; gap: 32px; }
+.story-photo img { width: 100%; aspect-ratio: 9 / 10; object-fit: cover; object-position: 50% 30%; }
+.story-text { display: grid; gap: 1.1rem; align-content: center; }
+.story-text p { max-width: 34em; }
+.pull { font: 600 var(--s-lead)/1.4 var(--f-display); color: var(--pom); padding-left: 20px; position: relative; }
+.pull::before { content: ""; position: absolute; left: 0; top: .2em; bottom: .2em; width: 8px; background: var(--weave) repeat-y center / 16px auto; }
+@media (min-width: 900px) { .story { grid-template-columns: .8fr 1.2fr; gap: 72px; align-items: center; } }
+
+/* ---------- შეფასებები ---------- */
+.reviews { padding-top: 0; display: grid; gap: 1rem; }
+.placeholder { background: var(--cream-2); padding: clamp(24px, 4vw, 44px); border-radius: 4px; color: var(--muted); font-size: var(--s-lead); max-width: 40em; }
+
+/* ---------- ვიზიტი ---------- */
+.field-wal { background: var(--wal); color: var(--cream); }
+.field-wal .lead { color: var(--saf-hi); font-weight: 600; margin-top: .9rem; }
+.visit { display: grid; gap: 40px; }
+.facts { display: grid; gap: 16px 32px; margin-top: 1.6rem; }
+.facts dt { font-size: var(--s-small); color: #d9c7ae; }
+.facts dd { font-weight: 600; font-size: 1.0625rem; }
+.facts a { text-decoration-color: var(--saf); text-underline-offset: 4px; padding: .2em 0; display: inline-block; }
+.facts a:hover { color: var(--saf-hi); }
+.map { background: var(--wal-d); aspect-ratio: 4 / 3.6; }
+.map iframe { width: 100%; height: 100%; border: 0; display: block; }
+@media (min-width: 560px) { .facts { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .visit { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; } .map { aspect-ratio: 4 / 4.2; } }
+
+/* ---------- ფუტერი ---------- */
+.foot { background: var(--pom-d); color: var(--cream); }
+.foot-in { max-width: calc(var(--max) + 2 * var(--m)); margin: 0 auto; padding: clamp(36px, 5vw, 64px) var(--m) 0; display: grid; gap: 28px; }
+.foot-name { font: 700 clamp(2.2rem, 6vw, 4rem)/1.1 var(--f-display); color: var(--saf); }
+.foot-name span { font: 600 .5em/1 "Noto Serif Georgian", serif; color: var(--cream); white-space: nowrap; }
+.foot-brand p + p { margin-top: .9rem; color: #ecd9c6; max-width: 30em; }
+.foot nav { display: grid; grid-template-columns: repeat(2, max-content); gap: 2px 32px; align-content: start; }
+.foot nav a { text-decoration: none; padding: .45em 0; }
+.foot a:hover { color: var(--saf-hi); }
+.social { display: flex; gap: 10px; }
+.social a { width: 48px; height: 48px; display: grid; place-items: center; background: var(--pom); border-radius: 4px; transition: background-color .2s, color .2s; }
+.social a:hover { background: var(--saf); color: var(--wal-d); }
+.social svg { width: 22px; height: 22px; }
+.foot-last { max-width: calc(var(--max) + 2 * var(--m)); margin: 0 auto; padding: 32px var(--m) 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: #ecd9c6; font-size: var(--s-small); padding-right: calc(var(--m) + 72px); }
+@media (min-width: 860px) { .foot-in { grid-template-columns: 1.4fr 1fr auto; gap: 56px; } }
+
+/* ---------- ხურჯინის ზოლი (მცურავი WhatsApp) ---------- */
+.bagbar {
+  position: fixed; right: 14px; bottom: 14px; z-index: 20; min-height: 56px; min-width: 56px; max-width: calc(100vw - 28px);
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em; padding: 0 16px;
+  background: var(--pap); color: #fff; border-radius: 4px; text-decoration: none; font: 600 1rem/1.2 var(--f-text);
+  transition: background-color .2s, transform .2s;
+}
+.bagbar:hover { background: var(--pap-d); transform: translateY(-3px); }
+.bagbar svg { width: 26px; height: 26px; flex: none; }
+.bagbar span { display: none; }
+.bagbar.has-items { background: var(--pom); outline: 3px solid var(--saf); }
+.bagbar.has-items span { display: inline; }
+
+/* ---------- გამოჩენა გადახვევისას ---------- */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-photo img { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .card:hover .card-img img { transform: none; }
+}
